@@ -8,6 +8,7 @@
   <link href="//fonts.googleapis.com/css?family=Raleway:400,300,600" rel="stylesheet" type="text/css">
   <link rel="stylesheet" href="{{ SITEURL }}/theme/css/normalize.css">
   <link rel="stylesheet" href="{{ SITEURL }}/theme/css/skeleton.css">
+  <link rel="stylesheet" href="{{ SITEURL }}/theme/css/mystyle.css">
   <link rel="icon" type="images/png" href="{{ SITEURL }}/theme/imagess/favicon.png">
   {% if FEED_ALL_ATOM %}
   <link href="{{ FEED_DOMAIN }}/{{ FEED_ALL_ATOM }}" type="application/atom+xml" rel="alternate" title="{{ SITENAME }} Full Atom Feed" />
@@ -38,36 +39,48 @@
 
 <body id="index" class="home">
   <div class="container">
-  <header id="banner" class="body">
-    <div class="row">
-        <h1><a href="{{ SITEURL }}/">{{ SITENAME }} <strong>{{ SITESUBTITLE }}</strong></a></h1>
-    </div>
-  </header><!-- /#banner -->
-  <nav id="menu"><ul>
-  {% for title, link in MENUITEMS %}
-    <li><a href="{{ link }}">{{ title }}</a></li>
-  {% endfor %}
-  {% if DISPLAY_PAGES_ON_MENU %}
-    {% for p in pages %}
-      <li{% if p == page %} class="active"{% endif %}><a href="{{ SITEURL }}/{{ p.url }}">{{ p.title }}</a></li>
-    {% endfor %}
-  {% else %}
-    {% if DISPLAY_CATEGORIES_ON_MENU %}
-      {% for cat, null in categories %}
-        <li{% if cat == category %} class="active"{% endif %}><a href="{{ SITEURL }}/{{ cat.url }}">{{ cat }}</a></li>
-      {% endfor %}
-    {% endif %}
-  {% endif %}
-  </ul></nav><!-- /#menu -->
-  {% block content %}
-  {% endblock %}
-  <footer id="contentinfo" class="body">
-    <address id="about" class="vcard body">
-    Proudly powered by <a href="http://getpelican.com/">Pelican</a>,
-    which takes great advantage of <a href="http://python.org"/>Python</a>.
-    Styled with <a href="http://getskeleton.com/"/>Skeleton</a>.
-    </address><!-- /#about -->
-  </footer><!-- /#contentinfo -->
+    <header id="banner" class="body">
+      <div class="row">
+        <div class="twelve columns">
+          <h1><a href="{{ SITEURL }}/">{{ SITENAME }} <strong>{{ SITESUBTITLE }}</strong></a></h1>
+        </div>
+      </div>
+    </header><!-- /#banner -->
+    
+    <nav id="menu">
+      <div class="row">
+        <div class="twelve columns">
+        {% for title, link in MENUITEMS %}
+          <a href="{{ link }}">{{ title }}</a>{% if not loop.last or DISPLAY_PAGES_ON_MENU or DISPLAY_CATEGORIES_ON_MENU %} / {% endif %}
+        {% endfor %}
+        {% if DISPLAY_PAGES_ON_MENU %}
+          {% for p in pages %}
+            {% if p == page %}{{ p.title }}{% else %}<a href="{{ SITEURL }}/{{ p.url }}">{{ p.title }}</a>{% endif %}{% if not loop.last or DISPLAY_CATEGORIES_ON_MENU%} / {% endif %}
+          {% endfor %}
+        {% endif %}
+        {% if DISPLAY_CATEGORIES_ON_MENU %}
+          {% for cat, null in categories %}
+            {% if cat == category %}{{ cat }}{% else %}<a href="{{ SITEURL }}/{{ cat.url }}">{{ cat }}</a>{% endif %}{% if not loop.last %} / {% endif %}
+          {% endfor %}
+        {% endif %}
+        </div>
+      </div>
+    </nav><!-- /#menu -->
+    
+    {% block content %}
+    {% endblock %}
+    
+    <footer id="contentinfo" class="body">
+      <div class="row">
+        <div class="twelve columns">
+          <address id="about" class="vcard body">
+          Proudly powered by <a href="http://getpelican.com/">Pelican</a>,
+          which takes great advantage of <a href="http://python.org"/>Python</a>.
+          Styled with <a href="http://getskeleton.com/"/>Skeleton</a>.
+          </address><!-- /#about -->
+        </div>
+      </div>
+    </footer><!-- /#contentinfo -->
   </div>
 </body>
 </html>
