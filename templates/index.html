@@ -19,15 +19,16 @@
         </div>
               <footer class="post-info">
                 <div class="row">
-                  <div class="one column"></div><div class="eleven columns"> {{ article.locale_date }} </div>
+                  <div class="one column"></div><div class="eleven columns">Published on {{ article.locale_date }} </div>
                 </div>
                 <div class="row">
                   <div class="one column"></div><div class="eleven columns">
-                    <address class="vcard author">By
+                    <address class="vcard author">by
                     {% for author in article.authors %}
-                        <a class="url fn" href="{{ SITEURL }}/{{ author.url }}">{{ author }}</a>
+                        <a class="url fn" href="{{ SITEURL }}/{{ author.url }}">{{ author }}</a>{% if loop.last %}.{% endif %}
                     {% endfor %}
-                    </address></div>
+                    </address>
+                  </div>
                 </div>
               </footer><!-- /.post-info -->
               <div class="entry-content"> 

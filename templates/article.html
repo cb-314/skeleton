@@ -14,31 +14,43 @@
 {% block content %}
 <section id="content" class="body">
   <header>
-    <h2 class="entry-title">
-      <a href="{{ SITEURL }}/{{ article.url }}" rel="bookmark"
-         title="Permalink to {{ article.title|striptags }}">{{ article.title }}</a></h2>
- {% import 'translations.html' as translations with context %}
- {{ translations.translations_for(article) }}
+    <div class="row">
+      <div class="twelve columns">
+        <h2 class="entry-title">
+          <a href="{{ SITEURL }}/{{ article.url }}" rel="bookmark"
+             title="Permalink to {{ article.title|striptags }}">{{ article.title }}</a></h2>
+        </div>
+      </div>
+     {% import 'translations.html' as translations with context %}
+     {{ translations.translations_for(article) }}
   </header>
   <footer class="post-info">
-    <abbr class="published" title="{{ article.date.isoformat() }}">
-      {{ article.locale_date }}
-    </abbr>
-	{% if article.modified %}
-    <abbr class="modified" title="{{ article.modified.isoformat() }}">
-      {{ article.locale_modified }}
-    </abbr>
+    <div class="row">
+      <div class="one column"></div><div class="eleven columns">Published on {{ article.locale_date }}</div>
+    </div>
+    {% if article.modified %}
+    <div class="row">
+      <div class="one column"></div><div class="eleven columns">and modified on {{ article.locale_modified }}</div>
+    </div>
 	{% endif %}
     {% if article.authors %}
-    <address class="vcard author">
-      By {% for author in article.authors %}
-          <a class="url fn" href="{{ SITEURL }}/{{ author.url }}">{{ author }}</a>
-        {% endfor %}
-    </address>
+    <div class="row">
+      <div class="one column"></div><div class="eleven columns">
+        <address class="vcard author">
+          by {% for author in article.authors %}
+              <a class="url fn" href="{{ SITEURL }}/{{ author.url }}">{{ author }}</a>{% if loop.last %}.{% endif %}
+            {% endfor %}
+        </address>
+      </div>
+    </div>
     {% endif %}
   </footer><!-- /.post-info -->
   <div class="entry-content">
-    {{ article.content }}
+    <div class="row">
+      <div class="twelve columns">
+        {{ article.content }}
+      </div>
+    </div>
   </div><!-- /.entry-content -->
 </section>
 {% endblock %}
