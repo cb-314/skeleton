@@ -51,18 +51,19 @@
       <div class="row">
         <div class="twelve columns">
         {% for title, link in MENUITEMS %}
-          <a href="{{ link }}">{{ title }}</a>{% if not loop.last or DISPLAY_PAGES_ON_MENU or DISPLAY_CATEGORIES_ON_MENU %} / {% endif %}
+          <a href="{{ link }}">{{ title }}</a> / 
         {% endfor %}
         {% if DISPLAY_PAGES_ON_MENU %}
           {% for p in pages %}
-            {% if p == page %}{{ p.title }}{% else %}<a href="{{ SITEURL }}/{{ p.url }}">{{ p.title }}</a>{% endif %}{% if not loop.last or DISPLAY_CATEGORIES_ON_MENU%} / {% endif %}
+            {% if p == page %}{{ p.title }}{% else %}<a href="{{ SITEURL }}/{{ p.url }}">{{ p.title }}</a>{% endif %} / 
           {% endfor %}
         {% endif %}
         {% if DISPLAY_CATEGORIES_ON_MENU %}
           {% for cat, null in categories %}
-            {% if cat == category %}{{ cat }}{% else %}<a href="{{ SITEURL }}/{{ cat.url }}">{{ cat }}</a>{% endif %}{% if not loop.last %} / {% endif %}
+            {% if cat == category %}{{ cat }}{% else %}<a href="{{ SITEURL }}/{{ cat.url }}">{{ cat }}</a>{% endif %} / 
           {% endfor %}
         {% endif %}
+        <a href="{{SITEURL }}/archives.html">Archive</a>
         </div>
       </div>
     </nav><!-- /#menu -->
