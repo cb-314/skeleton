@@ -1,0 +1,19 @@
+<div class="row">
+  <div class="one column"></div><div class="eleven columns">Published on {{ article.locale_date }}</div>
+</div>
+{% if article.modified %}
+<div class="row">
+  <div class="one column"></div><div class="eleven columns">and modified on {{ article.locale_modified }}</div>
+</div>
+{% endif %}
+{% if article.authors %}
+<div class="row">
+  <div class="one column"></div><div class="eleven columns">
+    <address class="vcard author">
+      by {% for author in article.authors %}
+          <a class="url fn" href="{{ SITEURL }}/{{ author.url }}">{{ author }}</a>{% if loop.last %}.{% endif %}
+        {% endfor %}
+    </address>
+  </div>
+</div>
+{% endif %}

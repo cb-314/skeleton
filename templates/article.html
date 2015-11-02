@@ -25,37 +25,10 @@
      {{ translations.translations_for(article) }}
   </header>
   <footer class="post-info">
-    <div class="row">
-      <div class="one column"></div><div class="eleven columns">Published on {{ article.locale_date }}</div>
-    </div>
-    {% if article.modified %}
-    <div class="row">
-      <div class="one column"></div><div class="eleven columns">and modified on {{ article.locale_modified }}</div>
-    </div>
-	{% endif %}
-    {% if article.authors %}
-    <div class="row">
-      <div class="one column"></div><div class="eleven columns">
-        <address class="vcard author">
-          by {% for author in article.authors %}
-              <a class="url fn" href="{{ SITEURL }}/{{ author.url }}">{{ author }}</a>{% if loop.last %}.{% endif %}
-            {% endfor %}
-        </address>
-      </div>
-    </div>
-    {% endif %}
+    {% include 'article_infos.html' %}
   </footer><!-- /.post-info -->
   <footer class="post-nav-top">
-    <div class="row">
-      <div class="one column"></div><div class="eleven columns">
-        {% for art in articles %}
-          {% if art == article %}
-            {% if not loop.first %}<a href="{{ SITEURL }}/{{ articles[loop.index0 - 1].url }}"> Next article</a>{% if not loop.last %} / {% endif %}{% endif %}
-            {% if not loop.last %}<a href="{{ SITEURL }}/{{ articles[loop.index0 + 1].url }}"> Previous article</a>{% endif %}
-          {% endif %}
-        {% endfor %}
-      </div>
-    </div>
+    {% include 'article_nav.html' %}
   </footer>
   <div class="entry-content">
     <div class="row">
@@ -65,16 +38,7 @@
     </div>
   </div><!-- /.entry-content -->
   <footer class="post-nav-bottom">
-    <div class="row">
-      <div class="one column"></div><div class="eleven columns">
-        {% for art in articles %}
-          {% if art == article %}
-            {% if not loop.first %}<a href="{{ SITEURL }}/{{ articles[loop.index0 - 1].url }}"> Next article</a>{% if not loop.last %} / {% endif %}{% endif %}
-            {% if not loop.last %}<a href="{{ SITEURL }}/{{ articles[loop.index0 + 1].url }}"> Previous article</a>{% endif %}
-          {% endif %}
-        {% endfor %}
-      </div>
-    </div>
+    {% include 'article_nav.html' %}
   </footer>
 </section>
 {% endblock %}
