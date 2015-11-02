@@ -45,6 +45,18 @@
     </div>
     {% endif %}
   </footer><!-- /.post-info -->
+  <footer class="post-nav-top">
+    <div class="row">
+      <div class="one column"></div><div class="eleven columns">
+        {% for art in articles %}
+          {% if art == article %}
+            {% if not loop.first %}<a href="{{ SITEURL }}/{{ articles[loop.index0 - 1].url }}"> Next article</a>{% if not loop.last %} / {% endif %}{% endif %}
+            {% if not loop.last %}<a href="{{ SITEURL }}/{{ articles[loop.index0 + 1].url }}"> Previous article</a>{% endif %}
+          {% endif %}
+        {% endfor %}
+      </div>
+    </div>
+  </footer>
   <div class="entry-content">
     <div class="row">
       <div class="twelve columns">
@@ -52,5 +64,17 @@
       </div>
     </div>
   </div><!-- /.entry-content -->
+  <footer class="post-nav-bottom">
+    <div class="row">
+      <div class="one column"></div><div class="eleven columns">
+        {% for art in articles %}
+          {% if art == article %}
+            {% if not loop.first %}<a href="{{ SITEURL }}/{{ articles[loop.index0 - 1].url }}"> Next article</a>{% if not loop.last %} / {% endif %}{% endif %}
+            {% if not loop.last %}<a href="{{ SITEURL }}/{{ articles[loop.index0 + 1].url }}"> Previous article</a>{% endif %}
+          {% endif %}
+        {% endfor %}
+      </div>
+    </div>
+  </footer>
 </section>
 {% endblock %}
