@@ -1,5 +1,6 @@
 <div class="row">
   <div class="one column"></div><div class="eleven columns">
+    Navigation: 
     {% for art in articles %}
       {% if art == article %}
         {% if not loop.first %}<a href="{{ SITEURL }}/{{ articles[loop.index0 - 1].url }}"> Next article</a>{% if not loop.last %} / {% endif %}{% endif %}
