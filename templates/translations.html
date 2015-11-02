@@ -2,7 +2,11 @@
 {% if article.translations %}
 Translations: 
 {% for translation in article.translations %}
-<a href="{{ SITEURL }}/{{ translation.url }}">{{ translation.lang }}</a>
+<div class="row">
+  <div class="twelve columns">
+    <a href="{{ SITEURL }}/{{ translation.url }}">{{ translation.lang }}</a>
+  </div>
+</div>
 {% endfor %}
 {% endif %}
 {% endmacro %}
