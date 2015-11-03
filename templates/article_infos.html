@@ -11,7 +11,7 @@
   <div class="one column"></div><div class="eleven columns">
     <address class="vcard author">
       by {% for author in article.authors %}
-          <a class="url fn" href="{{ SITEURL }}/{{ author.url }}">{{ author }}</a>{% if loop.last %}.{% endif %}
+          <a class="url fn" href="{{ SITEURL }}/{{ author.url }}">{{ author }}</a>{% if loop.last %}.{% else %}, {% endif %}
         {% endfor %}
     </address>
   </div>
