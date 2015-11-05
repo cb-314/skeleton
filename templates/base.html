@@ -60,10 +60,15 @@
         {% endif %}
         {% if DISPLAY_CATEGORIES_ON_MENU %}
           {% for cat, null in categories %}
-            {% if cat == category %}{{ cat }}{% else %}<a href="{{ SITEURL }}/{{ cat.url }}">{{ cat }}</a>{% endif %} / 
+            {% if cat == category %}{{ cat }}{% else %}<a href="{{ SITEURL }}/{{ cat.url }}">{{ cat }}</a>{% endif %}{% if not loop.last or "tags" in DIRECT_TEMPLATES or "archives" in DIRECT_TEMPLATES %} / {% endif %}
           {% endfor %}
         {% endif %}
-        <a href="{{SITEURL }}/archives.html">Archive</a> / <a href="{{SITEURL }}/tags.html">Tags</a>
+        {% if "archives" in DIRECT_TEMPLATES %}
+          {% if IN_ARCHIVE_HTML %}Archives{% else %}<a href="{{SITEURL }}/archives.html">Archives</a>{% endif %}{% if "tags" in DIRECT_TEMPLATES %} / {% endif %}
+        {% endif %}
+        {% if "tags" in DIRECT_TEMPLATES %}
+          {% if IN_TAGS_HTML %}Tags{% else %}<a href="{{SITEURL }}/tags.html">Tags</a>{% endif %}
+        {% endif %}
         </div>
       </div>
     </nav><!-- /#menu -->
