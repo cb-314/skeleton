@@ -11,7 +11,7 @@
   </div>
 </div>
 
-{% for year, date_year in dates|groupby("date.year")%}
+{% for year, date_year in dates|groupby("date.year")|reverse %}
 <div class="row">
   <div class="twelve columns">
     <h2>{{ year }}</h2>
