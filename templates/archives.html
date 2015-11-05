@@ -3,12 +3,26 @@
 {% block title %}{{ SITENAME }} - Archive{% endblock %}
 
 {% block content %}
-<h1>Archives for {{ SITENAME }}</h1>
+<div class="row">
+  <div class="twelve columns">
+    <h1>Archives for {{ SITENAME }}</h1>
+  </div>
+</div>
 
-<dl>
-{% for article in dates %}
-    <dt>{{ article.locale_date }}</dt>
-    <dd><a href="{{ SITEURL }}/{{ article.url }}">{{ article.title }}</a></dd>
+{% for year, date_year in dates|groupby("date.year")%}
+<div class="row">
+  <div class="twelve columns">
+    <h2>{{ year }}</h2>
+  </div>
+</div>
+<div class="row">
+  <div class="twelve columns">
+    <ul>
+    {% for article in date_year %}
+        <li>{{ article.date.strftime("%Y-%m-%d") }}: <a href="{{ SITEURL }}/{{ article.url }}">{{ article.title }}</a> posted by {% for author in article.authors %}<a href="{{ SITEURL }}/{{ author.url }}">{{ author }}</a>{% if not loop.last %}, {% endif %}{% endfor %}
+    {% endfor %}
+  </div>
+</div>
 {% endfor %}
-</dl>
+
 {% endblock %}
