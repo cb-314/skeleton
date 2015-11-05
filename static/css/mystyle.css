@@ -10,3 +10,9 @@ address {
 a {
   text-decoration: none;
 }
+
+hr {
+  clear: both;
+  margin: 0;
+  display: block;
+}
