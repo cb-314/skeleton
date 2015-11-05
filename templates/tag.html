@@ -1,8 +1,8 @@
 {% extends "base.html" %}
 
-{% block title %}{{ SITENAME }} - Tags{% endblock %}
+{% block title %}{{ SITENAME }} - Tag {{ tag }}{% endblock %}
 
-t{% block content %}
+{% block content %}
   <div class="row">
     <div class="twelve columns">
       <h1>{{ tag }}</h1>
