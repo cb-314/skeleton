@@ -2,8 +2,9 @@
   <div class="one column"></div><div class="eleven columns">
     {% for art in articles %}
       {% if art == article %}
-        {% if not loop.first %}<a href="{{ SITEURL }}/{{ articles[loop.index0 - 1].url }}">&laquo; newer</a>{% if not loop.last %} / {% endif %}{% endif %}
-        {% if not loop.last %}<a href="{{ SITEURL }}/{{ articles[loop.index0 + 1].url }}">older &raquo;</a>{% endif %}
+        {% if not loop.first %}<a href="{{ SITEURL }}/{{ articles[loop.index0 - 1].url }}">&laquo;</a>{% endif %}
+        Article {{ loop.index }} / {{ loop.length }}
+        {% if not loop.last %}<a href="{{ SITEURL }}/{{ articles[loop.index0 + 1].url }}">&raquo;</a>{% endif %}
       {% endif %}
     {% endfor %}
   </div>
