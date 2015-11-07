@@ -3,6 +3,14 @@ img {
 	height: auto;
   box-sizing: border-box; 
 }
+img.landscape {
+	max-width: 100%;
+}
+img.portrait {
+  max-width: 80%;
+  display: block;
+  margin: 0 auto;
+}
 
 address {
 	font-style: italic;
