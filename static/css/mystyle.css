@@ -2,14 +2,26 @@ img {
 	max-width: 100%;
 	height: auto;
   box-sizing: border-box; 
+  display: block;
+  margin: 0 auto;
 }
 img.landscape {
 	max-width: 100%;
 }
+img.square {
+	max-width: 80%;
+}
 img.portrait {
+  max-width: 70%;
+}
+img.portrait32 {
+  max-width: 66%;
+}
+img.portrait43 {
+  max-width: 75%;
+}
+img.portrait54 {
   max-width: 80%;
-  display: block;
-  margin: 0 auto;
 }
 
 address {
