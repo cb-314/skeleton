@@ -4,7 +4,7 @@ A Pelican theme styled with Skeleton
 ## SkeletonImages plugin
 
 The plugin orientation in the SkeletonImages package can be used to add the
-classes `landscape, square, portrait, portrait32, portrait43, portrait54' to
+classes `landscape, square, portrait, portrait32, portrait43, portrait54` to
 image tags in order to make their responsive scaling work as defined in the
 `mystyle.css`.
 
