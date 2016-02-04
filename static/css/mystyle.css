@@ -37,3 +37,7 @@ hr {
   margin: 0;
   display: block;
 }
+
+#nobottommargin {
+  margin-bottom: 0;
+}
