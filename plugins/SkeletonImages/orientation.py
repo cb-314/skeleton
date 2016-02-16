@@ -52,8 +52,8 @@ def rewrite_images(p):
           source_start = line.find("src=", img_start)
           source_start = line.find("\"", source_start) + 1
           source_end = line.find("\"", source_start)
-          img_source = base_path + line[source_start:source_end]
-          if w > 1001:
+          img_source = line[source_start:source_end]
+          if w > 1000:
             line = line[:img_start] + "<a href=\"" + img_source + "\">" + line[img_start:img_end] + "</a>"
           # save result
           content[i] = line
