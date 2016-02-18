@@ -56,19 +56,19 @@
         {% endfor %}
         {% if DISPLAY_PAGES_ON_MENU %}
           {% for p in pages %}
-            {% if p == page %}{{ p.title }}{% else %}<a href="{{ SITEURL }}/{{ p.url }}">{{ p.title }}</a>{% endif %} / 
+            <a href="{{ SITEURL }}/{{ p.url }}">{{ p.title }}</a> / 
           {% endfor %}
         {% endif %}
         {% if DISPLAY_CATEGORIES_ON_MENU %}
           {% for cat, null in categories %}
-            {% if cat == category %}{{ cat }}{% else %}<a href="{{ SITEURL }}/{{ cat.url }}">{{ cat }}</a>{% endif %}{% if not loop.last or "tags" in DIRECT_TEMPLATES or "archives" in DIRECT_TEMPLATES %} / {% endif %}
+            <a href="{{ SITEURL }}/{{ cat.url }}">{{ cat }}</a>{% if not loop.last or "tags" in DIRECT_TEMPLATES or "archives" in DIRECT_TEMPLATES %} / {% endif %}
           {% endfor %}
         {% endif %}
         {% if "archives" in DIRECT_TEMPLATES %}
-          {% if IN_ARCHIVE_HTML %}Archives{% else %}<a href="{{SITEURL }}/archives.html">Archives</a>{% endif %}{% if "tags" in DIRECT_TEMPLATES %} / {% endif %}
+          <a href="{{SITEURL }}/archives.html">Archives</a>{% if "tags" in DIRECT_TEMPLATES %} / {% endif %}
         {% endif %}
         {% if "tags" in DIRECT_TEMPLATES %}
-          {% if IN_TAGS_HTML %}Tags{% else %}<a href="{{SITEURL }}/tags.html">Tags</a>{% endif %}
+          <a href="{{SITEURL }}/tags.html">Tags</a>
         {% endif %}
         </div>
       </div>
