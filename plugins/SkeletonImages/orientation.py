@@ -10,10 +10,11 @@ def isclose(a, b, rtol=1e-2):
   return a > b-db and a < b+db
 
 def rewrite_images(p):
+  siteurl = p.settings["SITEURL"]
+  output_path = p.output_path
   for dirName, subdirList, fileList in os.walk(p.output_path):
     for fileName in fileList:
       path = os.path.join(dirName, fileName)
-      base_path = path[:path.rfind("/")+1]
       with open(path, "r+") as infile:
         content = infile.readlines()
         # find images
@@ -26,8 +27,14 @@ def rewrite_images(p):
               source_start = line.find("src=", img_start)
               source_start = line.find("\"", source_start) + 1
               source_end = line.find("\"", source_start)
-              with Image.open(base_path+line[source_start:source_end]) as image:
-                images[i] = image.size
+              if siteurl in line[source_start:source_end]:
+                source_start = source_start + len(siteurl) + 1
+                with Image.open(os.path.join(output_path, line[source_start:source_end])) as image:
+                  images[i] = image.size
+              else:
+                base_path = os.path.split(path)[0]
+                with Image.open(os.path.join(base_path, line[source_start:source_end])) as image:
+                  images[i] = image.size
         for i in images.keys():
           line = content[i]
           img_start = line.find("<img")
