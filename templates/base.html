@@ -50,7 +50,7 @@
     
     <nav id="menu">
       <div class="row">
-        <div class="twelve columns">
+        <div class="ten columns">
         {% for title, link in MENUITEMS %}
           <a href="{{ link }}">{{ title }}</a> / 
         {% endfor %}
@@ -69,6 +69,14 @@
         {% endif %}
         {% if "tags" in DIRECT_TEMPLATES %}
           <a href="{{SITEURL }}/tags.html">Tags</a>
+        {% endif %}
+        </div>
+        <div class="two columns">
+        {% if FEED_ATOM %}
+          <a href="{{ FEED_DOMAIN }}/{{ FEED_ATOM }}" type="application/atom+xml" rel="alternate" title="{{ SITENAME }}">atom</a>
+        {% endif %}
+        {% if FEED_RSS %}
+          {% if FEED_ATOM %} / {% endif %}<a href="{{ FEED_DOMAIN }}/{{ FEED_RSS }}" type="application/rss+xml" rel="alternate" title="{{ SITENAME }}">rss</a>
         {% endif %}
         </div>
       </div>
