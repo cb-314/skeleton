@@ -1,6 +1,11 @@
 # skeleton
 A Pelican theme styled with Skeleton
 
+## Dependecies
+
+The Theme depends on ``sort_tags``. If the plugin is not available, the
+fallback behaviour is to sort the tags by name.
+
 ## Impressum
 
 If you need to include an impressum on your page, you can set
