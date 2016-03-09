@@ -8,6 +8,12 @@ If you need to include an impressum on your page, you can set
 in the Pelican sense and has to be named ``impressum.md``. Take care to also
 set ``status: hidden`` in order to hide it from the rest of the blog.
 
+## Newsletter signup
+
+If you want to allow users to sign up for a newsletter, you can activate the
+``SKELETON_NEWSLETTER_SIGNUP`` switch. As with the impressum you will have to
+create a hidden ``newsletter_signup.md`` page.
+
 ## SkeletonImages plugin
 
 The plugin orientation in the SkeletonImages package can be used to add the
