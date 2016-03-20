@@ -26,6 +26,11 @@ classes `landscape, square, portrait, portrait32, portrait43, portrait54` to
 image tags in order to make their responsive scaling work as defined in the
 `mystyle.css`.
 
+# Favicon
+
+The favicon is assumed to reside in ``static/favicon.png``, which also has to
+be declared as a ``STATIC_PATH`` in your pelican configuration.
+
 ## Colophon
 This theme is based on the `simple` theme of
 [Pelican](https://github.com/getpelican/pelican). The css styling was performed
