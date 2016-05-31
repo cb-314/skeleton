@@ -38,6 +38,10 @@ hr {
   display: block;
 }
 
+figcaption {
+  text-align: center;
+}
+
 #nobottommargin {
   margin-bottom: 0;
 }
